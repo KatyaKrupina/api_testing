@@ -1,35 +1,16 @@
 import random
-
 import pytest
-
-
-def pytest_addoption(parser):
-    parser.addoption(
-        "--url",
-        default="http://ya.ru",
-        help="This is request url"
-    )
-    parser.addoption(
-        "--status_code",
-        default=200,
-        help=""
-    )
-
-
-@pytest.fixture
-def url(request):
-    return request.config.getoption("--url")
-
-
-@pytest.fixture
-def code(request):
-    return int(request.config.getoption("--status_code"))
 
 
 @pytest.fixture
 def all_breeds_schema():
     schema = {"message": "url", "status": "success"}
     return schema
+
+
+@pytest.fixture()
+def random_fixture():
+    return str(random.randint(1, 15000))
 
 
 @pytest.fixture
@@ -53,11 +34,6 @@ def brewery_schema():
     return schema
 
 
-@pytest.fixture()
-def random_fixture():
-    return str(random.randint(1, 15000))
-
-
 @pytest.fixture(params=
                 ['micro',
                  'regional',
@@ -69,4 +45,3 @@ def random_fixture():
                  'proprietor'])
 def brewery_types(request):
     return request.param
-
