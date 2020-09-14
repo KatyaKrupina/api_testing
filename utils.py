@@ -1,9 +1,9 @@
 class CheckStatusCode:
-    def isSuccess(self, response):
+    def is_success(self, response):
         assert response.status_code == 200
 
-    def isCreated(self, response):
+    def is_created(self, response):
         assert response.status_code == 201
 
-    def isClientError(self, response):
+    def is_not_found(self, response):
         assert response.status_code == 404

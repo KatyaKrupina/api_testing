@@ -9,9 +9,9 @@ apiClient = ApiClientDog()
 
 
 @pytest.mark.parametrize('method, check',
-                         [(apiClient.get_list_all_breeds, checkStatusCode.isSuccess),
-                          (apiClient.get_random_image, checkStatusCode.isSuccess),
-                          (apiClient.get_list_with_error, checkStatusCode.isClientError)])
+                         [(apiClient.get_list_all_breeds, checkStatusCode.is_success),
+                          (apiClient.get_random_image, checkStatusCode.is_success),
+                          (apiClient.get_list_with_error, checkStatusCode.is_not_found)])
 def test_status_code(method, check):
     response = method()
     check(response)
@@ -33,7 +33,7 @@ def test_sub_breeds_images(breed):
     else:
         for sub_breed in sub_breeds:
             response = apiClient.get_all_sub_breeds_images(breed=breed, sub_breed=sub_breed)
-            checkStatusCode.isSuccess(response)
+            checkStatusCode.is_success(response)
 
 
 def test_response_all_breeds_ok():
@@ -42,7 +42,7 @@ def test_response_all_breeds_ok():
     dogs = all_breeds['message']
     for breed in dogs.keys():
         res = apiClient.get_random_image_by_breed(breed=breed)
-        checkStatusCode.isSuccess(res)
+        checkStatusCode.is_success(res)
 
 
 def test_all_sub_breeds_type():

@@ -8,4 +8,4 @@ https://jsonplaceholder.typicode.com/
 через Dockerfile:
 
     docker build -t api/tests .
-    docker run api/tests
+    docker run --rm --name test_run api/tests
