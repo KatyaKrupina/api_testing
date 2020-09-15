@@ -4,8 +4,7 @@ https://dog.ceo/dog-api/ \
 https://www.openbrewerydb.org/  
 https://jsonplaceholder.typicode.com/ 
 
-Прогон тестов можно запустить с помощью pytest при настроенном окружении или 
-через Dockerfile:
+Запуск тестов:
 
     docker build -t api/tests .
     docker run --rm --name test_run api/tests
